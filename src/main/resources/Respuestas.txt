@@ -1,0 +1,5 @@
+TP1-1.4) ¿Qué diferencia encuentra entre las implementaciones de los puntos anteriores?
+
+Las diferencias que encuentro es que en una lista con arreglos el espacio es limitado, mientras que en una lista enlazada el espacio es dinamico.
+Tambien en una lista para acceder a cierta posicion los datos se acceden de manera indizada (por posicion) y en la otra de manera lineal (se recorre la lista hasta la posicion deseada)
+
