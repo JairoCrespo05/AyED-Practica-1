@@ -150,16 +150,26 @@ public class ListaDeEnterosEnlazada extends ListaDeEnteros {
 		return tamanio;
 	}
 
-	@Override
-	public void imprimirElementosInversos() {
-		comenzar();
-		mostrarElementosRecursivo(this.actual.getDato());
-	}
 
 	/// Mi Metodo
-//	@Override
-	public void mostrarElementosRecursivo(Integer lista) {
+	public void mostrarElementosRecursivo(ListaDeEnterosEnlazada lista){
+		int indice = 1;
+		if (lista.esVacia()){
+			System.out.println("Lista vacia");
+			return;
+		}
 
+		if (lista.fin()) {
+			System.out.println("fin del la lista");
+			return;
+		}
+
+		System.out.println("iterando lista");
+		int elemento = lista.proximo();
+		mostrarElementosRecursivo(lista);
+
+		System.out.println("Elemento:");
+		System.out.println(elemento);
 	}
 
 

@@ -26,19 +26,19 @@ public class TestListaDeEnterosEnlazada {
 
 
         ListaDeEnterosEnlazada lista = new ListaDeEnterosEnlazada();
-//        lista.comenzar();
+        lista.comenzar();
 
-//        lista.agregarInicio(n1);
-//        lista.agregarInicio(n2);
-//        lista.agregarInicio(n3);
-//        lista.agregarInicio(n4);
-//        lista.agregarInicio(n5);
+        lista.agregarInicio(n1);
+        lista.agregarInicio(n2);
+        lista.agregarInicio(n3);
+        lista.agregarInicio(n4);
+        lista.agregarInicio(n5);
 
-        lista.agregarFinal(n1);
-        lista.agregarFinal(n2);
-        lista.agregarFinal(n3);
-        lista.agregarFinal(n4);
-        lista.agregarFinal(n5);
+//        lista.agregarFinal(n1);
+//        lista.agregarFinal(n2);
+//        lista.agregarFinal(n3);
+//        lista.agregarFinal(n4);
+//        lista.agregarFinal(n5);
 
         System.out.println(lista.incluye(n1));
         System.out.println(lista.incluye(n2));
@@ -53,5 +53,10 @@ public class TestListaDeEnterosEnlazada {
         System.out.println(lista.elemento(3));
         System.out.println(lista.elemento(4));
         System.out.println(lista.elemento(5));
+
+        System.out.println("------------------------RECURSION----------------------------");
+
+        lista.comenzar();
+        lista.mostrarElementosRecursivo(lista);
     }
 }

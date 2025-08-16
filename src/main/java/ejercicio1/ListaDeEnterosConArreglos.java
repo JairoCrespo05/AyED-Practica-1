@@ -108,10 +108,6 @@ public class ListaDeEnterosConArreglos extends ListaDeEnteros {
 		return tamanio;
 	}
 
-	@Override
-	public void imprimirElementosInversos() {
-
-	}
 
 	/// Mi Metodo
 	public void mostrarElementosRecursivo(ListaDeEnterosConArreglos lista){

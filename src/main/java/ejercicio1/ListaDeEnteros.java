@@ -19,8 +19,6 @@ public abstract class ListaDeEnteros {
 	public abstract boolean esVacia();
 	public abstract int tamanio();
 
-	/// Metodo propio
-	public abstract void imprimirElementosInversos();
 
 
 
