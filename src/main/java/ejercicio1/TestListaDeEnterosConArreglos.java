@@ -28,19 +28,19 @@ public class TestListaDeEnterosConArreglos {
 
 
         ListaDeEnterosConArreglos lista = new ListaDeEnterosConArreglos();
-//        lista.comenzar();
+        lista.comenzar();
 
-//        lista.agregarInicio(n1);
-//        lista.agregarInicio(n2);
-//        lista.agregarInicio(n3);
-//        lista.agregarInicio(n4);
-//        lista.agregarInicio(n5);
+        lista.agregarInicio(n1);
+        lista.agregarInicio(n2);
+        lista.agregarInicio(n3);
+        lista.agregarInicio(n4);
+        lista.agregarInicio(n5);
 
-        lista.agregarFinal(n1);
-        lista.agregarFinal(n2);
-        lista.agregarFinal(n3);
-        lista.agregarFinal(n4);
-        lista.agregarFinal(n5);
+//        lista.agregarFinal(n1);
+//        lista.agregarFinal(n2);
+//        lista.agregarFinal(n3);
+//        lista.agregarFinal(n4);
+//        lista.agregarFinal(n5);
 
         System.out.println(lista.incluye(n1));
         System.out.println(lista.incluye(n2));
@@ -58,6 +58,7 @@ public class TestListaDeEnterosConArreglos {
 
         System.out.println("------------------------RECURSION----------------------------");
 
-        lista.imprimirElementosInversos();
+        lista.comenzar();
+        lista.mostrarElementosRecursivo(lista);
     }
 }

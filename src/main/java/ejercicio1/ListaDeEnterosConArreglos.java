@@ -110,26 +110,29 @@ public class ListaDeEnterosConArreglos extends ListaDeEnteros {
 
 	@Override
 	public void imprimirElementosInversos() {
-		comenzar();
-		mostrarElementosRecursivo(this.actual);
 
 	}
 
-
 	/// Mi Metodo
-	public void mostrarElementosRecursivo(Integer elemento){
-		if (this.tamanio==0){
+	public void mostrarElementosRecursivo(ListaDeEnterosConArreglos lista){
+
+		if (lista.esVacia()){
 			System.out.println("Lista vacia");
 			return;
 		}
 
-		if (this.actual < this.tamanio) {
-			mostrarElementosRecursivo(this.proximo());
+		if (lista.fin()) {
+			System.out.println("fin del la lista");
 			return;
 		}
 
-		System.out.println(this.elemento(actual));
+		int elemento = lista.elemento(actual+1);
+		System.out.println("iterando lista");
+		lista.proximo();
+		mostrarElementosRecursivo(lista);
 
+		System.out.println("Elemento:");
+		System.out.println(elemento);
 	}
 
 
