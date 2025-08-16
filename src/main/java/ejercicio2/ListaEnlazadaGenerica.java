@@ -209,4 +209,22 @@ public class ListaEnlazadaGenerica<T> extends ListaGenerica<T> {
 		return nueva;
 	}
 
+
+	public boolean agregar(T[] lista){
+		int i = 0;
+		if (lista.length == 0){
+			System.out.println("Lista vacia");
+			return false;
+		}
+		while (!(i == lista.length)){
+			System.out.println("agregando elementos");
+			T elemento = lista[i];
+			comenzar();
+			agregarFinal(elemento);
+			i++;
+		}
+		return true;
+	}
+
+
 }

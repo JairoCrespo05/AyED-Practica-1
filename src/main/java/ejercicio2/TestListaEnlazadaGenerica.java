@@ -18,6 +18,18 @@ public class TestListaEnlazadaGenerica {
 
         System.out.println(lista);
 
+        System.out.println("-------------------Agregar Lista-------------------------------");
+
+        Integer[] listaEnteros = new Integer[3];
+        ListaEnlazadaGenerica lista2 = new ListaEnlazadaGenerica();
+
+        listaEnteros[0] = 10;
+        listaEnteros[1] = 20;
+        listaEnteros[2] = 30;
+
+        System.out.println(lista2.agregar(listaEnteros));
+
+        System.out.println(lista2.toString());
 
 
     }
