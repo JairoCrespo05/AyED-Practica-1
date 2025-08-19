@@ -1,4 +1,4 @@
-package ejercicio2;
+package tp01.ejercicio2;
 
 public class Estudiante {
     private String nombre;

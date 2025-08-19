@@ -1,4 +1,4 @@
-package ejercicio2;
+package tp01.ejercicio2;
 
 /**
  * ListaDeEnteros es una clase abstracta que define los métodos que deberán

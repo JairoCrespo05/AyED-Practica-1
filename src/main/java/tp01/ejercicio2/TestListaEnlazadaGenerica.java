@@ -1,4 +1,4 @@
-package ejercicio2;
+package tp01.ejercicio2;
 
 public class TestListaEnlazadaGenerica {
     public static void main(String[] args) {

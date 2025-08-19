@@ -1,31 +1,33 @@
-package ejercicio1;
+package tp01.ejercicio1;
 
-public class TestListaDeEnterosEnlazada {
+public class TestListaDeEnterosConArreglos {
     public static void main(String[] args) {
 
-        /// Da todo TRUEs
+        /// El 4to sout muestra un FALSE
+        /// Esto se debe a la comparacion en Incluye que se usa "==" en vez de equals
 //        var n1 = 32;
 //        var n2 = 2;
 //        var n3 = 57;
-//        var n4 = 400;
+//        var n4 = 4400;
 //        var n5 = 93;
 
         /// Da todo TRUE
-//        Integer n1 = 32;
-//        Integer n2 = 2;
-//        Integer n3 = 57;
-//        Integer n4 = 4400;
-//        Integer n5 = 93;
+        Integer n1 = 32;
+        Integer n2 = 2;
+        Integer n3 = 57;
+        Integer n4 = 4400;
+        Integer n5 = 93;
 
-        /// Da todo TRUE
-        int n1 = 32;
-        int n2 = 2;
-        int n3 = 57;
-        int n4 = 4400;
-        int n5 = 93;
+        /// El 4to sout muestra un FALSE
+        /// Esto se debe a la comparacion en Incluye que se usa "==" en vez de equals
+//        int n1 = 32;
+//        int n2 = 2;
+//        int n3 = 57;
+//        int n4 = 4400;
+//        int n5 = 93;
 
 
-        ListaDeEnterosEnlazada lista = new ListaDeEnterosEnlazada();
+        ListaDeEnterosConArreglos lista = new ListaDeEnterosConArreglos();
         lista.comenzar();
 
         lista.agregarInicio(n1);

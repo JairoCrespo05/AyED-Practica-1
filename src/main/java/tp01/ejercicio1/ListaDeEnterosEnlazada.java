@@ -1,4 +1,4 @@
-package ejercicio1;
+package tp01.ejercicio1;
 
 public class ListaDeEnterosEnlazada extends ListaDeEnteros {
 	private NodoEntero inicio;
