@@ -25,7 +25,7 @@ public class TestListaDeEnterosEnlazada {
         int n5 = 93;
 
 
-        ListaDeEnterosEnlazada lista = new ListaDeEnterosEnlazada();
+        var lista = new ListaDeEnterosEnlazada();
         lista.comenzar();
 
         lista.agregarInicio(n1);

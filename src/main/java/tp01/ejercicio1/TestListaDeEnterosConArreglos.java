@@ -27,7 +27,7 @@ public class TestListaDeEnterosConArreglos {
 //        int n5 = 93;
 
 
-        ListaDeEnterosConArreglos lista = new ListaDeEnterosConArreglos();
+        var lista = new ListaDeEnterosConArreglos();
         lista.comenzar();
 
         lista.agregarInicio(n1);
