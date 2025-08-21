@@ -9,34 +9,54 @@ public class TestDeBalanceo {
         this.pila = pila;
     }
 
-    public boolean esBalanceado(String s){
-        boolean balanceado = false;
+
+    public boolean estaBalanceado(String s){
+        boolean confirmado = esBalanceado(s, 0);
+
+        if (!this.pila.esVacia()){
+            while (!this.pila.esVacia()){
+                this.pila.desapilar();
+            }
+            confirmado = false;
+        }
+
+        return  confirmado;
+    }
+
+    private boolean esBalanceado(String s, int index){
 
         //Caso base donde si el string esta vacio y la pila tambien entonces devuelve true
         // (para evitar errores como --> "(((" = true)
-        if(s.isEmpty()){
-            return (this.pila.esVacia());
+        if(index == s.length()){
+            return true;
         }
 
-        if( '(' == s.charAt(0) || '{' == s.charAt(0) || '[' == s.charAt(0) ) {
-            this.pila.apilar(s.charAt(0));
-            balanceado = esBalanceado(s.substring(1));
+        char letra = s.charAt(index);
 
-        }else if ( ')' == s.charAt(0) || '}' == s.charAt(0) || ']' == s.charAt(0) ){
-            //si la pila esta vacia las llaves no estan cerradas
+        if (letra == ' '){
+            return esBalanceado(s, index + 1);
+        }
+
+        if( '(' == letra || '{' == letra || '[' == letra ) {
+            this.pila.apilar(s.charAt(index));
+
+        }else if ( ')' == letra || '}' == letra || ']' == letra ){
+            //si la pila esta vacia las llaves no estan abiertas
             if(this.pila.esVacia()){
                 return false;
             }
-            if(!coinciden(this.pila.tope(), s.charAt(0))){
+            //si no coinciden no tiene caso seguir l recursion
+            if(!coinciden(this.pila.tope(), s.charAt(index))){
                 return false;
-
             }
 
             this.pila.desapilar();
-            balanceado = esBalanceado(s.substring(1));
+        }else {
+            return false;
         }
 
-        return balanceado;
+
+        return esBalanceado(s, index + 1);
     }
 
 

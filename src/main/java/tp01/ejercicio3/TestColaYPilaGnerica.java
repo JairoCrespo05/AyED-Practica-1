@@ -37,9 +37,10 @@ public class TestColaYPilaGnerica {
 
         System.out.println(pila.tope());
 
-        pila.desapilar();
-        pila.desapilar();
-//        pila.desapilar();
+        System.out.println(pila.desapilar());
+        System.out.println(pila.desapilar());
+//        System.out.println(pila.desapilar());
+
 
         System.out.println("-----------------MODIFICACION----------------------");
         System.out.println(pila.tope());

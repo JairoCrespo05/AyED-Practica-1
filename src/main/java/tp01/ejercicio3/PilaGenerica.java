@@ -23,13 +23,17 @@ public class PilaGenerica<T> {
         this.datos.agregarFinal(elemento);
     }
 
-    public void desapilar(){
+    public T desapilar(){
+        T topeP;
         if (esVacia()){
             throw new RuntimeException(PILA_VACIA);
         }
         this.datos.comenzar();
+        topeP = this.datos.elemento(this.tope);
         this.datos.eliminarEn(this.tope);
         this.tope--;
+
+        return topeP;
     }
 
     public T tope(){
