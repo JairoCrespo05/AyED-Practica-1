@@ -38,15 +38,15 @@ public class TestDeBalanceo {
         }
 
         if( '(' == letra || '{' == letra || '[' == letra ) {
-            this.pila.apilar(s.charAt(index));
+            this.pila.apilar(letra);
 
         }else if ( ')' == letra || '}' == letra || ']' == letra ){
             //si la pila esta vacia las llaves no estan abiertas
             if(this.pila.esVacia()){
                 return false;
             }
-            //si no coinciden no tiene caso seguir l recursion
-            if(!coinciden(this.pila.tope(), s.charAt(index))){
+            //si no coinciden no tiene caso seguir la recursion
+            if(!coinciden(this.pila.tope(), letra)){
                 return false;
             }
 
