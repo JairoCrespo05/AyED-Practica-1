@@ -1,5 +1,49 @@
-TP1-1.4) ¿Qué diferencia encuentra entre las implementaciones de los puntos anteriores?
+TP1
+1.4) ¿Qué diferencia encuentra entre las implementaciones de los puntos anteriores?
 
 Las diferencias que encuentro es que en una lista con arreglos el espacio es limitado, mientras que en una lista enlazada el espacio es dinamico.
 Tambien en una lista para acceder a cierta posicion los datos se acceden de manera indizada (por posicion) y en la otra de manera lineal (se recorre la lista hasta la posicion deseada)
+
+1.6. Analice las implementaciones de la clase ListaDeEnteros y sus subclases.
+
+a) ¿Podría darle comportamiento a algún método de la superclase ListaDeEnteros? ¿Por qué la clase se define como abstracta? Note que una subclase implementa la lista usando un arreglo de tamaño fijo y la otra usando nodos enlazados.
+
+b) Considerando los enlaces entre nodos, ¿qué diferencias existen entre agregar un nodo al principio de la lista, agregar un nodo en el medio y agregar un nodo al final?
+
+c) Una lista implementada con arreglos, ¿tiene su primer elemento en el índice del vector: 0, 1 o depende de la implementación?
+
+Si depende de su implementacion debido a que en ciertos casos el inicio se puede tomar como 1 y en otros casos se puede tomar como 0
+
+
+2.1. ¿Podría resolver los ejercicios del punto 1 utilizando listas genéricas?
+
+Si se podria debido a que la implementacion de las listas genericas permite una solucion incluso mejor, debido a que
+se puede tomar cualquier tipo de dato generico
+
+2.4-a) ¿Qué diferencia observa entre las implementaciones de ListaEnlazadaGenerica y ListaDeEnterosEnlazada?
+
+La gran diferencia es que los elementos en la lista Genereica son definidos de manera dinamica mientras que la lista de enteros
+solo acepta el tipo de dato entero(int).
+
+b) ¿Cómo se define el nodo genérico? ¿Cómo se crea una instancia del mismo?
+
+ el nodo generico se agrega la firma <T> que se utiliza para que la clase acepte muchos datos genericos.
+ La instancia del nodo se crea seteando el dato directmente, asi como tambien se setea el nodo siguente.
+
+c) ¿Qué devuelve el método elemento() de la lista?
+
+devuelve un elemento de tipo T que es generico y es definido en la creacion de una instancia de la clase.
+
+d) ¿Cómo agregaría un método nuevo? Implemente un nuevo método de la lista que se llama agregar(T[]):boolean. El mismo debe agregar todos los elementos del arreglo que recibe como parámetro y retornar true si todos ellos fueron agregados.
+
+dependiendo que me pide, si me pide que devuelva o inserte elementos en la lista tengo que usar el tipo de dato T para que funcione bien el metodo
+
+4.a) Indique qué estructura de datos utilizará para resolver este problema y cómo la utilizará.
+
+Voy a usar un apila y lo que voy a guardar dentro van a ser los caracteres de apertura y cuando encuentre un caracter de cierre
+voy a comparar el caracter del tope con el caracter de cierre, si coinciden deapilo ese caracter de apertura de la pila y continuo recorriendo,
+sino entonces devuelvo falso ya que no coinciden en el balanceo.
+
+TP02
+
 
