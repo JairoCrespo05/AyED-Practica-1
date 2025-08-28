@@ -46,4 +46,5 @@ sino entonces devuelvo falso ya que no coinciden en el balanceo.
 
 TP02
 
+4)a) Realizare un recorrido pr niveles debido a que cada nivel necesitare evaluar el promedio para despues comparar los promedios de todos los niveles para saber cual es el maximo
 
