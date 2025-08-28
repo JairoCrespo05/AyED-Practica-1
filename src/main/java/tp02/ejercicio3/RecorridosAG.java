@@ -137,7 +137,7 @@ public class RecorridosAG {
             ArbolGeneral<Integer> actual = colaArboles.tope();
             colaArboles.desencolar();
 
-            int datoActual = a.getDato();
+            int datoActual = actual.getDato();
             if (datoActual % 2 != 0 && datoActual > n){
                 listaNros.agregarFinal(datoActual);
             }

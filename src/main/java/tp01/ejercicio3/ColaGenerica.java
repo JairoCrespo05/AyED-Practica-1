@@ -42,4 +42,11 @@ public class ColaGenerica<T> {
     public boolean esVacia(){
         return (tope <1);
     }
+
+    /// miMetodo (puede tener errores si no se maneja bien el tamanio de la Clase Concreta que extiende de ListaGenerica)
+
+    public int tamanio(){
+        return tope;
+    }
+
 }

@@ -54,6 +54,11 @@ public class TestRecorridos {
             System.out.println("InOrden:");
             nrosImpares = recorrido.numerosImparesMayoresQueInOrden(arbolPadre, 0);
             imprimir(nrosImpares);
+
+            // Probar Por Niveles
+            System.out.println("Por Niveles:");
+            nrosImpares = recorrido.numerosImparesMayoresQuePorNiveles(arbolPadre, 0);
+            imprimir(nrosImpares);
     }
 
     private static void imprimir(ListaGenerica<Integer> lista) {
