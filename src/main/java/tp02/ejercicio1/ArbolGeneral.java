@@ -4,6 +4,7 @@ package tp02.ejercicio1;
 import tp01.ejercicio2.ListaEnlazadaGenerica;
 import tp01.ejercicio2.ListaGenerica;
 
+
 public class ArbolGeneral<T> {
 
 	private T dato;
@@ -72,14 +73,29 @@ public class ArbolGeneral<T> {
 	public ListaEnlazadaGenerica<T> preOrden() {
 		return null;
 	}
-	
+
+	/// nose si esta bien
 	public Integer altura() {
-		// Falta implementar..
-		return 0;
+		int alturaMax =0;
+		if (!tieneHijos()){
+			return 0;
+		}
+		this.hijos.comenzar();
+		while(!this.hijos.fin()){
+			ArbolGeneral<T> hijo = this.hijos.proximo();
+
+			int alturaHijo =  hijo.altura();
+
+			if (alturaHijo > alturaMax){
+				alturaMax = alturaHijo;
+			}
+		}
+		return 1 + alturaMax;
 	}
 
 	public Integer nivel(T dato) {
-		// falta implementar
+
+
 		return -1;
 	}
 

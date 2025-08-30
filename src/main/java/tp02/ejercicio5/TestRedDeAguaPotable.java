@@ -64,5 +64,9 @@ public class TestRedDeAguaPotable {
 
         System.out.println("El minimo Caudal del Arbol: " + A.getDato() + " es: " + minimoCaudal);
 
+
+        System.out.println("La Altura del Arbol: " + A.getDato() + " es: " + A.altura());
+
+
     }
 }
