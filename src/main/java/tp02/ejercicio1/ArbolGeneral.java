@@ -3,6 +3,7 @@ package tp02.ejercicio1;
 
 import tp01.ejercicio2.ListaEnlazadaGenerica;
 import tp01.ejercicio2.ListaGenerica;
+import tp01.ejercicio3.ColaGenerica;
 
 
 public class ArbolGeneral<T> {
@@ -94,14 +95,68 @@ public class ArbolGeneral<T> {
 	}
 
 	public Integer nivel(T dato) {
+		if (this.esVacio()){
+			System.out.println("Arbol Vacio");
+			return -1;
+		}
 
+		return nivel(dato, 0);
+	}
+
+	/// -1 representa que el dato no se encontro
+	private int nivel(T dato, int nivelActual) {
+		int nivelMax = 0;
+		if (this.getDato().equals(dato)) {
+			return nivelActual;
+		}
+
+		if (tieneHijos()) {
+			this.hijos.comenzar();
+			while (!this.hijos.fin()) {
+				int nivelDatoEncontrado = this.hijos.proximo().nivel(dato, nivelActual + 1);
+				if (nivelDatoEncontrado != -1) {
+					return nivelDatoEncontrado;
+				}
+			}
+		}
 
 		return -1;
 	}
 
+
 	public Integer ancho() {
-		// Falta implementar..
-		return 0;
+		int maxNodos = 0;
+		if (this.esVacio()){
+			return maxNodos;
+		}
+
+		ColaGenerica<ArbolGeneral<T>> cola = new ColaGenerica<>(new ListaEnlazadaGenerica<>());
+		cola.encolar(this);
+
+		while(!cola.esVacia()){
+
+			int nodosXNivel = cola.tamanio();
+
+			for (int i =0; i < nodosXNivel; i++){
+
+				ArbolGeneral<T> actual = cola.tope();
+				cola.desencolar();
+
+				if (actual.tieneHijos()){
+					ListaGenerica<ArbolGeneral<T>> hijos = actual.getHijos();
+					hijos.comenzar();
+					while (!hijos.fin()){
+						cola.encolar(hijos.proximo());
+					}
+				}
+
+				if(maxNodos < nodosXNivel){
+					maxNodos = nodosXNivel;
+				}
+			}
+		}
+		return maxNodos;
 	}
+
 
 }

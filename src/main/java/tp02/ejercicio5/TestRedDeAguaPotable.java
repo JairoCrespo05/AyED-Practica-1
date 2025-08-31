@@ -67,6 +67,10 @@ public class TestRedDeAguaPotable {
 
         System.out.println("La Altura del Arbol: " + A.getDato() + " es: " + A.altura());
 
+        System.out.println("El Nivel del Arbol: " + J.getDato() + " es: " + A.nivel("J"));
+
+        System.out.println("El Ancho del Arbol: " + A.getDato() + " es: " + A.ancho());
+
 
     }
 }
