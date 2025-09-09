@@ -105,7 +105,6 @@ public class ArbolGeneral<T> {
 
 	/// -1 representa que el dato no se encontro
 	private int nivel(T dato, int nivelActual) {
-		int nivelMax = 0;
 		if (this.getDato().equals(dato)) {
 			return nivelActual;
 		}
@@ -157,6 +156,135 @@ public class ArbolGeneral<T> {
 		}
 		return maxNodos;
 	}
+
+	public boolean esMiDescendiente(T dato){
+		if (this.esVacio()){
+			return false;
+		}
+
+		if (this.tieneHijos()){
+			while (!this.hijos.fin()){
+				ArbolGeneral<T> hijoAct = this.hijos.proximo();
+
+				if(hijoAct.getDato().equals(dato)) {
+					return true;
+				}
+
+				if (hijoAct.esMiDescendiente(dato)){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+
+
+
+	/// devuelve true si el valor a es ancestro   del valor b
+	public boolean esAncestro(T a, T b){
+
+		if (this.esVacio()){
+			return false;
+		}
+
+		if (this.dato.equals(a)){
+			return esMiDescendiente(b);
+		}
+
+		if (this.tieneHijos()){
+			this.hijos.comenzar();
+			while (!this.hijos.fin()){
+				if (this.hijos.proximo().esAncestro(a, b)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+/// recorrido recursivo
+	public boolean esArbolLleno(){
+		if (this.esVacio()){
+			return false;
+		}
+
+		return esArbolLleno(this, 0);
+	}
+
+	private boolean esArbolLleno(ArbolGeneral<T> arbol, int nivelActual){
+		int nivelComparacion = nivelActual + 1;
+		if (arbol.tieneHijos()){
+			ListaGenerica<ArbolGeneral<T>> hijos = arbol.getHijos();
+			hijos.comenzar();
+			int nivelHjos =0;
+			while (!hijos.fin()){
+				ArbolGeneral<T> hijoAct = hijos.proximo();
+				nivelHjos = hijoAct.nivel(hijoAct.dato);
+
+				if(nivelComparacion != nivelHjos){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+
+
+	/// recorrido iterativo (verificar por niveles que no existan huecos)
+	public boolean esArbolCompleto(){
+		if (this.esVacio()){
+			return false;
+		}
+		Integer grado = null;
+		boolean hayHueco = false;
+
+		ColaGenerica<ArbolGeneral> cola = new ColaGenerica<>(new ListaEnlazadaGenerica<>());
+		cola.encolar(this);
+
+		while(!cola.esVacia()){
+
+			int nodosXnivel = cola.tamanio();
+
+
+			for (int i=0; i < nodosXnivel; i++){
+				ArbolGeneral<T> arbol = cola.tope();
+				cola.desencolar();
+
+				int cantHijos = 0;
+				if (arbol.tieneHijos()){
+					ListaGenerica<ArbolGeneral<T>> hijos = arbol.getHijos();
+					cantHijos = hijos.tamanio();
+					while(!hijos.fin()){
+						cola.encolar(hijos.proximo());
+					}
+				}
+
+				if(grado == null && cantHijos > 0){
+					grado = cantHijos; // con el primer hijo se asigna el grado del Arbol
+				}
+
+				if (grado != null && cantHijos > grado){
+					return false; //si existe una cantidad de hijos mayor al grado entonces no esta completo
+				}
+
+				if (!hayHueco){ // si no hay un hueco, compruebo que los sgtes nodos no tengan hijos, si los tienen NO ES COMPLETO
+					if (grado != null && cantHijos < grado){
+						hayHueco = true; //aparece el primer espacio
+					}
+				}else {
+					if (cantHijos > 0){ //aparece un nodo con hijos despues del hueco, cosa que por regla de arbol completo no se puede
+						return false;
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+
 
 
 }
