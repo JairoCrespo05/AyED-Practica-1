@@ -96,7 +96,7 @@ public class ArbolBinario<T> {
 			cantHojas += this.hijoDerecho.contarHojas();
 		}
 
-		return cantHojas + 1;
+		return cantHojas;
 	}
 
 
