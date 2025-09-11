@@ -48,7 +48,7 @@ public class ContadorArbol {
 
         //Hijo Izquierdo
         if (arbolBinario.tieneHijoIzquierdo()){
-            contarParesEnPostOrden(lista, arbolBinario.getHijoIzquierdo());
+            contarParesEnInOrden(lista, arbolBinario.getHijoIzquierdo());
         }
 
         //Raiz
@@ -59,7 +59,7 @@ public class ContadorArbol {
 
         //Hijo Derecho
         if (arbolBinario.tieneHijoDerecho()){
-            contarParesEnPostOrden(lista, arbolBinario.getHijoDerecho());
+            contarParesEnInOrden(lista, arbolBinario.getHijoDerecho());
         }
 
         return lista;
