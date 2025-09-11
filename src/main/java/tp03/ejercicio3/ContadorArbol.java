@@ -23,14 +23,17 @@ public class ContadorArbol {
 
         if (arbol.esVacio()){ return null;}
 
+        //Hijo Izquierdo
         if (arbol.tieneHijoIzquierdo()){
             contarParesEnPostOrden(lista, arbol.getHijoIzquierdo());
         }
 
+        //Hijo Derecho
         if (arbol.tieneHijoDerecho()){
             contarParesEnPostOrden(lista, arbol.getHijoDerecho());
         }
 
+        //Raiz
         Integer numero = arbol.getDato();
         if (numero %2 == 0){
             lista.agregarFinal(numero);
@@ -43,15 +46,18 @@ public class ContadorArbol {
 
         if (arbolBinario.esVacio()){ return null;}
 
+        //Hijo Izquierdo
+        if (arbolBinario.tieneHijoIzquierdo()){
+            contarParesEnPostOrden(lista, arbolBinario.getHijoIzquierdo());
+        }
+
+        //Raiz
         Integer numero = arbolBinario.getDato();
         if (numero %2 == 0){
             lista.agregarFinal(numero);
         }
 
-        if (arbolBinario.tieneHijoIzquierdo()){
-            contarParesEnPostOrden(lista, arbolBinario.getHijoIzquierdo());
-        }
-
+        //Hijo Derecho
         if (arbolBinario.tieneHijoDerecho()){
             contarParesEnPostOrden(lista, arbolBinario.getHijoDerecho());
         }
