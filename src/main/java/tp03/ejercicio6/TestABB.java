@@ -1,5 +1,7 @@
 package tp03.ejercicio6;
 
+import tp01.ejercicio2.ListaGenerica;
+
 public class TestABB {
     public static void main(String[] args) {
         ArbolBinarioDeBusqueda<Integer> arbol = new ArbolBinarioDeBusqueda<>();
@@ -15,6 +17,17 @@ public class TestABB {
         arbol.agregar(40);
         arbol.agregar(23);
 
+        ArbolBinarioDeBusqueda<Integer> arbolABuscar = new ArbolBinarioDeBusqueda<>(25);
+
         System.out.println("Árbol creado con raíz: " + arbol.getDato());
+
+        ListaGenerica<Integer> camino = arbol.caminoRecorrido(arbolABuscar);
+        System.out.println("El camino de la raíz: " + arbol.getDato() + " Hasta el Nodo ("+arbolABuscar+") "+"Es: \n");
+
+        camino.comenzar();
+        while (!camino.fin()){
+            System.out.println(camino.proximo());
+        }
+
     }
 }

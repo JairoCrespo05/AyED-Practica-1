@@ -1,5 +1,9 @@
 package tp03.ejercicio6;
 
+import tp01.ejercicio2.ListaEnlazadaGenerica;
+import tp01.ejercicio2.ListaGenerica;
+import tp01.ejercicio3.PilaGenerica;
+
 public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 	private T dato;
 	private ArbolBinarioDeBusqueda<T> hijoIzquierdo;
@@ -73,7 +77,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 	public void agregar (Comparable<T> dato){
 		if (this.esVacio()){ //Si el arbol esta vacio entonces se setea el nuevo dato
 			this.setDato((T) dato);
-		}else {// delega al metodo privado recursivo para agregar en ls hijos
+		}else {// delega al metodo privado recursivo para agregar en los hijos
 			agregar(dato, this);
 		}
 	} 
@@ -120,7 +124,47 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 		// TO DO
 		return null;
 	}
-	
+
+	public ListaGenerica<Integer> caminoRecorrido(ArbolBinarioDeBusqueda<Integer> arbol){
+		ListaGenerica<Integer> listaABB = new ListaEnlazadaGenerica<>();
+		boolean encontrado = false;
+
+		if (arbol.esVacio()){return null;}
+
+		ArbolBinarioDeBusqueda<Integer> act = (ArbolBinarioDeBusqueda<Integer>) this;
+		listaABB.agregarFinal(act.getDato());
+		while (!act.esVacio() && !encontrado) {
+			//si el dato del arbol comparado a mi arbol actual es menor a 0 entonces baja a la izquierda (menor a la raiz)
+			if (arbol.getDato().compareTo((Integer) act.getDato()) < 0) {
+				//niego el valor actual ya que bajo a la izquierda
+//				listaABB.eliminarEn(listaABB.tamanio());
+				listaABB.agregarFinal(-act.hijoIzquierdo.getDato());
+				if (act.tieneHijoIzquierdo()) {
+					act = act.getHijoIzquierdo();
+
+				}  else {
+					return null;
+				}
+
+				//si el dato del arbol comparado a mi arbol actual es mayor a 0 entonces baja a la Derecha (mayor a la raiz)
+			} else if (arbol.getDato().compareTo((Integer) act.getDato()) > 0) {
+				if (act.tieneHijoDerecho()) {
+					listaABB.agregarFinal(act.hijoDerecho.getDato());
+					act = act.getHijoDerecho();
+				}  else {
+					return null;
+				}
+			} else {
+				encontrado = true;
+				listaABB.eliminarEn(listaABB.tamanio());
+			}
+
+		}
+
+		return listaABB;
+	}
+
+
 	@Override
 	public String toString() {
 		return this.getDato().toString();
