@@ -29,5 +29,7 @@ public class TestABB {
             System.out.println(camino.proximo());
         }
 
+        System.out.println("el mayor inmediato de: "+arbolABuscar.getDato() +" Es: "+ arbol.mayorInmediato(arbolABuscar.getDato()));
+
     }
 }

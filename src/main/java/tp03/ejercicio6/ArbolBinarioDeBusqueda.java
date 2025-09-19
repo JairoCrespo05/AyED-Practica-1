@@ -125,7 +125,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 		return null;
 	}
 
-	public ListaGenerica<Integer> caminoRecorrido(ArbolBinarioDeBusqueda<Integer> arbol){
+	public ListaGenerica<Integer> caminoRecorrido(ArbolBinarioDeBusqueda<Integer> arbol){  /// Posible ejercicio para parcial
 		ListaGenerica<Integer> listaABB = new ListaEnlazadaGenerica<>();
 		boolean encontrado = false;
 
@@ -134,10 +134,9 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 		ArbolBinarioDeBusqueda<Integer> act = (ArbolBinarioDeBusqueda<Integer>) this;
 		listaABB.agregarFinal(act.getDato());
 		while (!act.esVacio() && !encontrado) {
-			//si el dato del arbol comparado a mi arbol actual es menor a 0 entonces baja a la izquierda (menor a la raiz)
+			//si el dato del arbol comparado a mi arbol actual es menor a 0 entonces baja a la izquierda (menor al Padre)
 			if (arbol.getDato().compareTo((Integer) act.getDato()) < 0) {
 				//niego el valor actual ya que bajo a la izquierda
-//				listaABB.eliminarEn(listaABB.tamanio());
 				listaABB.agregarFinal(-act.hijoIzquierdo.getDato());
 				if (act.tieneHijoIzquierdo()) {
 					act = act.getHijoIzquierdo();
@@ -146,7 +145,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 					return null;
 				}
 
-				//si el dato del arbol comparado a mi arbol actual es mayor a 0 entonces baja a la Derecha (mayor a la raiz)
+				//si el dato del arbol comparado a mi arbol actual es mayor a 0 entonces baja a la Derecha (mayor al Padre)
 			} else if (arbol.getDato().compareTo((Integer) act.getDato()) > 0) {
 				if (act.tieneHijoDerecho()) {
 					listaABB.agregarFinal(act.hijoDerecho.getDato());
@@ -163,6 +162,45 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 
 		return listaABB;
 	}
+
+
+	public Integer mayorInmediato(int valor){
+		if (this.esVacio()){ return null;}
+
+		return mayorInmediato((ArbolBinarioDeBusqueda<Integer>)this, valor, -1);
+	}
+
+	private Integer mayorInmediato(ArbolBinarioDeBusqueda<Integer> arbol, int valor, Integer candidato){
+		Integer mayor = null;
+
+		if (mayor == null && arbol.getDato() > valor){
+			mayor = arbol.getDato();
+		}
+
+
+		if (arbol.getDato().compareTo(valor) > 0){ /// Baja Izquierda //Arbol.getdato es mayor al comparado por parametro
+			if (arbol.tieneHijoIzquierdo()){
+				mayor = mayorInmediato(arbol.getHijoIzquierdo(), valor, arbol.getDato());
+			}else {
+				return -1;
+			}
+		} else if (arbol.getDato().compareTo(valor) < 0) { ///Baja Derecha //Arbol.getdato es menor al comparado por parametro
+			if (arbol.tieneHijoDerecho()){
+				mayor = mayorInmediato(arbol.getHijoDerecho(), valor, candidato);
+			} else {
+				return -1;
+			}
+		}else { /// Valor Encontrado //Arbol.getdato es igual al comparado por parametro
+			if (arbol.tieneHijoDerecho()){ //Compruebo si por debajo del valor encontrado hay un mayor inmediato || Aca debo comprobar si el mayor es el pdre o el hijo
+				mayor = arbol.getHijoDerecho().getDato();
+			} else {
+				return candidato;
+			}
+		}
+
+		return mayor;
+	}
+
 
 
 	@Override
