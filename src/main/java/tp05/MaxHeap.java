@@ -3,9 +3,23 @@ package tp05;
 public class MaxHeap <T> implements ColaPrioridades<T>{
 
     private T[] datos;
+    private int cantElementos;
 
     public MaxHeap(){
         datos = (T[]) new Comparable[100];
+        cantElementos = 0;
+    }
+
+    private void percolate_up(){
+
+    }
+
+    private void percolate_down(int tamanio){
+
+    }
+
+    public void imprimir(){
+
     }
 
     @Override
