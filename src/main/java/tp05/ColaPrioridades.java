@@ -8,6 +8,6 @@ public interface ColaPrioridades <T>{
 
     boolean agregar(T elemento);
 
-    void tope();
+    T tope();
 
 }
