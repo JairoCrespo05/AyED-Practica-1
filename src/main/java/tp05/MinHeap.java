@@ -23,58 +23,7 @@ public class MinHeap <T extends Comparable<T>> implements ColaPrioridades <T> {
 
         datos[i] = temp_dato;
     }
-
-//    🚫 Con tu versión actual (((i - 1) / 2 > 0))
-//
-//    Insertás 1 en la última posición (i = 3).
-//
-//    Calculás el padre: (i - 1) / 2 = 1.
-//    Compara con datos[1] = 5.
-//            → 1 < 5, entonces sube: datos[3] = 5.
-//
-//    Ahora i = 1.
-//    El padre sería (1 - 1) / 2 = 0.
-//    Pero el while corta, porque (i - 1) / 2 > 0 → (0 > 0) → falso ❌
-//
-//    Entonces el 1 queda en índice 1, no sube hasta la raíz.
-    /// ese es el porque este no funciona del todo bien
-//    private void percolate_up(){
-//        T temp_dato = datos[cantElementos - 1];
-//        int i = cantElementos - 1;
-//
-//        while( ( (i - 1) / 2 > 0) && (datos[(i - 1) /2 ].compareTo(temp_dato) > 0) ){
-//            datos[i] = datos[(i - 1) /2 ];
-//            i = (i - 1) /2;
-//        }
-//
-//        datos[i] = temp_dato;
-//    }
-
-//
-//    private void percolate_down(int tamanio){
-//        int p = 1;
-//        T candidato = datos[p];
-//        boolean percolate_hecho = false;
-//
-//        while(2 * p < tamanio && !percolate_hecho){
-//            int h_min = 2 * p;
-//
-//
-//
-//            if (h_min != tamanio){
-//                if (datos[h_min + 1].compareTo(datos[h_min]) < 0){
-//                    h_min = h_min + 1;
-//                }
-//            }
-//            if (candidato.compareTo(datos[h_min]) > 0){
-//                datos[p] = datos[h_min];
-//                p = h_min;
-//            }else {
-//                percolate_hecho = true;
-//            }
-//            datos[p] = candidato;
-//        }
-//    }
+    
 
     private void percolate_down(int tamanio){
         int p = 0;
