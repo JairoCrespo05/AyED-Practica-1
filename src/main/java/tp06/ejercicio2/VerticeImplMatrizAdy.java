@@ -9,31 +9,27 @@ public class VerticeImplMatrizAdy<T> implements Vertice<T> {
 
     public VerticeImplMatrizAdy(T dato){
         this.dato = dato;
-        int posicion = 0;
+        this.posicion = 0;
     }
 
     @Override
     public T dato() {
-        return null;
+        return this.dato;
     }
 
     @Override
     public void setDato(T dato) {
-
+        this.dato = dato;
     }
 
     @Override
     public int getPosicion() {
-        return 0;
+        return this.posicion;
     }
 
     @Override
     public void setPosicion(int posicion) {
         this.posicion = posicion;
     }
-
-//    public void setPosicion(int posicion) {
-//        this.posicion = posicion;
-//    }
 
 }

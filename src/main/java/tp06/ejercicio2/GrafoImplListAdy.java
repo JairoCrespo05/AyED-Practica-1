@@ -1,11 +1,10 @@
-package tp06.ejercicio3;
+package tp06.ejercicio2;
 
 import tp01.ejercicio2.ListaEnlazadaGenerica;
 import tp01.ejercicio2.ListaGenerica;
 import tp06.ejercicio1.Arista;
 import tp06.ejercicio1.Grafo;
 import tp06.ejercicio1.Vertice;
-import tp06.ejercicio2.GrafoImplMatrizAdy;
 
 public class GrafoImplListAdy<T> implements Grafo<T> {
 

@@ -17,9 +17,9 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
     private int[][] matrizAdyacencia;
 
     public GrafoImplMatrizAdy (){
-        maxVertices = 0;
-        vertices = new ListaEnlazadaGenerica<Vertice<T>>();
-        matrizAdyacencia = new int[10][10];
+        this.maxVertices = 0;
+        this.vertices = new ListaEnlazadaGenerica<Vertice<T>>();
+        this.matrizAdyacencia = new int[10][10];
     }
 
 
@@ -33,10 +33,9 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
         }
 
         v.setPosicion(maxVertices);
-        matrizAdyacencia[maxVertices][maxVertices] = 0;
-        vertices.comenzar();
+//        matrizAdyacencia[maxVertices][maxVertices] = 0;
+//        vertices.comenzar();
         vertices.agregarFinal(v);
-
         maxVertices++;
     }
 
@@ -56,9 +55,11 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
         }
         //si el grafo es dirigido solo tendria que indicar de que fila hacia que columna es dirigido; ej origen --> destino; pero NO destino --> origen
         matrizAdyacencia[origen.getPosicion()][destino.getPosicion()] = 1;
-
+//si descomento esto, el dfs funciona bien, pero si es dirigido 'D' no es adyacente de 'B' asi como asi
 //        matrizAdyacencia[destino.getPosicion()][origen.getPosicion()] = 1;
 
+        System.out.println("origen: " + origen.dato() + " (" + origen.getPosicion() + ")");
+        System.out.println("destino: " + destino.dato() + " (" + destino.getPosicion() + ")");
     }
 
     @Override
@@ -78,7 +79,7 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
     /// #falta implementar
     @Override
     public boolean esAdyacente(Vertice<T> origen, Vertice<T> destino) {
-        return matrizAdyacencia[origen.getPosicion()][destino.getPosicion()] == 1;
+        return matrizAdyacencia[origen.getPosicion()][destino.getPosicion()] != 0; //esto por si es un grafo ponderado
     }
 
     @Override
@@ -103,10 +104,11 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
         ListaGenerica<Arista<T>> listaAdyacentes = new ListaEnlazadaGenerica<>();
         listaAdyacentes.comenzar();
         int origen = v.getPosicion();
-        for (int j = 0; j < matrizAdyacencia.length; j++) {
+        for (int j = 0; j < maxVertices; j++) {
 
             if(matrizAdyacencia[origen][j] != 0){
-                Vertice<T> adyacente = vertices.elemento(j);
+                /// #OJO CON ESTA PARTE
+                Vertice<T> adyacente = vertices.elemento(j+1); ///esto debido a que ListaEnlazadaGenerica es 1 based y no es zero based,por lo que hay que adaptar el indice;
                 Arista<T> arista = new AristaImpl<>(adyacente, matrizAdyacencia[origen][j]);
 
                 listaAdyacentes.agregarFinal(arista);
@@ -120,7 +122,8 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
     @Override
     public Vertice<T> vertice(int posicion) {
         vertices.comenzar();
-        return vertices.elemento(posicion);
+        /// #OJO CON ESTA PARTE
+        return vertices.elemento(posicion+1); ///esto debido a que ListaEnlazadaGenerica es 1 based y no es zero based,por lo que hay que adaptar el indice;
     }
 
     public boolean existe(Vertice<T> vertice){ return this.vertices.incluye(vertice); }
